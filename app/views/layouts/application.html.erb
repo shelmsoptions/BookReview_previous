@@ -9,9 +9,12 @@
   </head>
 
   <body>
-    <% if session[:user_id] %>
+    <% if user_signed_in? %>
       <div class=''>
-        Hello, <a href='/users/edit'><%= current_user.first_name %> | <%= link_to('Logout', destroy_user_session_path,  method: :delete) %></a> 
+        Hello, <a href='/users/edit'>
+          <%= current_user.first_name %> | 
+          <%= link_to('Logout', destroy_user_session_path,  method: :delete) %>
+        </a> 
       </div>
     <% end %>
     <p class="notice"><%= notice %></p>

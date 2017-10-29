@@ -14,6 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'devise'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-modal-rails'
 # gem 'sass-rails', '>= 3.2'
 gem 'jquery-rails'
 

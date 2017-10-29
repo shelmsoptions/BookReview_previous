@@ -12,7 +12,12 @@
 
 <p>
   <strong>Genre:</strong>
-  <%= @book.genre %>
+  <%= @genre.name %>
+</p>
+
+<p>
+  <strong>Entered by:</strong>
+  <%= @entered_by.alias %>
 </p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |

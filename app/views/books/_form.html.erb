@@ -11,22 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :title %>
     <%= form.text_field :title, id: :book_title %>
   </div>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :author %>
     <%= form.text_field :author, id: :book_author %>
   </div>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :genre_id %>
-    <%= form.text_field :genre_id, id: :book_genre_id %>
+    <%= collection_select(:book, :genre_id, Genre.all, :id, :name, {:include_blank => 'Select Genre'})   %>
   </div>
 
-  <div class="actions">
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  
+  <div class='actions'>
     <%= form.submit %>
   </div>
 <% end %>

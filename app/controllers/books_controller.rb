@@ -6,6 +6,9 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Book.find(params[:id])
+    @genre = Genre.find(@book.genre_id)
+    @entered_by = User.find(@book.user_id)
   end
 
   def new
@@ -50,11 +53,13 @@ class BooksController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
     end
 
+    # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :author, :genre_id)
+      params.require(:book).permit(:title, :author, :genre_id, :user_id)
     end
 end

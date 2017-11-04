@@ -27,6 +27,13 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails', '~> 3.6'
+  gem 'rspec-html-matchers'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails', '~> 4.7.0'
+  gem 'rubocop', '~> 0.49.1', require: false
+  gem 'rubocop-rspec', '~> 1.15.1', require: false
+  gem 'shoulda-matchers', '~> 3.1.2'
 end
 
 group :development do

@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :books
+  
+  before_save do
+    self.email.downcase!
+  end
 end

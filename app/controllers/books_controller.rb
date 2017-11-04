@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
+    @book = Book.find( params[:id] )
     @genre = Genre.find(@book.genre_id)
     @entered_by = User.find(@book.user_id)
   end
@@ -19,7 +19,8 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = Book.new( book_params )
+    @book.genre = Genre.find(@book.genre_id)
 
     respond_to do |format|
       if @book.save
@@ -34,7 +35,7 @@ class BooksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @book.update(book_params)
+      if @book.update( book_params )
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
         format.json { render :show, status: :ok, location: @book }
       else

@@ -7,8 +7,10 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find( params[:id] )
-    @genre = Genre.find(@book.genre_id)
-    @entered_by = User.find(@book.user_id)
+    @genre = Genre.find( @book.genre_id )
+    @entered_by = User.find( @book.user_id )
+    @review = Review.new
+    @reviews = Review.where( book:@book.id )
   end
 
   def new

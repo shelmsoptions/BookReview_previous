@@ -20,5 +20,25 @@
   <%= @entered_by.alias %>
 </p>
 
+<h4>Add your Review, <%= current_user.alias %></h4>
+
+<%= form_for @review, :url => url_for(:controller => 'reviews', :action => 'create') do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id  %>
+  <%= f.hidden_field :book_id, value: @book.id  %>
+  <p>
+    <%= f.label :review %>
+    <%= f.text_area :review %>
+  </p>
+  <%= f.submit 'Submit Review' %>
+<% end %>
+
+<h4>Reviews for <%= @book.title %></h4>
+<% @reviews.each do |review| %>
+<p>
+  <%= review.user.alias %> says: <%= review.review %>
+</p>
+____________<br />
+<% end %>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

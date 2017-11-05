@@ -1,48 +1,52 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
-
-<p>
-  <strong>Genre:</strong>
-  <%= @book.genre.name %>
-</p>
-
-<p>
-  <strong>Entered by:</strong>
-  <%= @entered_by.alias %>
-</p>
-
-<h4>Add your Review, <%= current_user.alias %></h4>
-
-<%= form_for @review, :url => url_for(:controller => 'reviews', :action => 'create') do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id  %>
-  <%= f.hidden_field :book_id, value: @book.id  %>
-  <p>
-    <%= f.label :review %>
-    <%= f.text_area :review %>
-  </p>
-  <%= f.submit 'Submit Review' %>
-<% end %>
-
-<h4>Reviews for <%= @book.title %></h4>
-<% @reviews.each do |review| %>
-<p>
-  <%= review.user.alias %> says: <%= review.review %>
-  <% if review.user != current_user %>
-  <% else %>
-    <%= link_to 'Edit', edit_review_url(review.id) %>
-  <% end %>
-</p>
-____________<br />
-<% end %>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<div class='panel-body'>
+  <div class='col-md-6'>
+    <p id="notice"><%= notice %></p>
+    
+    <p>
+      <strong>Title:</strong><br />
+      <%= @book.title %>
+    </p>
+    
+    <p>
+      <strong>Author:</strong><br />
+      <%= @book.author %>
+    </p>
+    
+    <p>
+      <strong>Genre:</strong><br />
+      <%= @book.genre.name %>
+    </p>
+    
+    <p>
+      <strong>Entered by:</strong><br />
+      <%= @entered_by.alias %>
+    </p>
+    
+    <h4>Add your Review, <%= current_user.alias %></h4>
+    
+    <%= form_for @review, :url => url_for(:controller => 'reviews', :action => 'create') do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id  %>
+      <%= f.hidden_field :book_id, value: @book.id  %>
+      <p>
+        <%= f.label :review %>:<br />
+        <%= f.text_area :review %>
+      </p>
+      <%= f.submit 'Submit Review' %>
+    <% end %>    
+    
+    <%= link_to 'Edit', edit_book_path(@book) %> |
+    <%= link_to 'Back', books_path %>
+  </div>
+  <div class='col-md-6'>
+    <h4>Reviews for <%= @book.title %></h4>
+    <% @reviews.each do |review| %>
+      <div class='row'>
+        <%= review.user.alias %> says: <%= review.review %>
+        <% if review.user != current_user %>
+        <% else %>
+          | <%= link_to 'Edit', edit_review_url(review.id) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

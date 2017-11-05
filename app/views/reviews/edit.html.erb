@@ -1,2 +1,13 @@
-<h1>Reviews#edit</h1>
-<p>Find me in app/views/reviews/edit.html.erb</p>
+<h1>Edit your review, <%= current_user.alias %></h1>
+<%= form_for @review, :url => { :action => 'update' }, method: :patch do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <p>
+    <%= f.text_field  :user, value: @review.user.alias, :readonly => true %> 
+  </p>
+  
+  <p>
+    <%= f.text_area :review, value: @review.review %>
+  </p>
+  
+  <%= f.submit 'Update Review' %>
+<% end %>

@@ -36,6 +36,10 @@
 <% @reviews.each do |review| %>
 <p>
   <%= review.user.alias %> says: <%= review.review %>
+  <% if review.user != current_user %>
+  <% else %>
+    <%= link_to 'Edit', edit_review_url(review.id) %>
+  <% end %>
 </p>
 ____________<br />
 <% end %>

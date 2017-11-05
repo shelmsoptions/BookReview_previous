@@ -17,11 +17,18 @@ class ReviewsController < ApplicationController
     redirect_to "/books/#{review.book_id}"
   end
 
-  # def edit
-  # end
-  # 
-  # def update
-  # end
+  def edit
+    @review = Review.find(params[:id])
+  end
+  
+  def update
+    @review = Review.find(params[:id])
+    if @review.update( review_params )
+      redirect_to "/books/#{@review.book_id}"
+    else
+      redirect_to "/reviews/#{params[:id]}/edit"
+    end
+  end
 
   def destroy
   end

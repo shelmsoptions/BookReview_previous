@@ -1,6 +1,6 @@
+<p id="notice"><%= notice %></p>
 <div class='panel-body'>
   <div class='col-md-6'>
-    <p id="notice"><%= notice %></p>
     
     <p>
       <strong>Title:</strong><br />
@@ -44,7 +44,8 @@
         <%= review.user.alias %> says: <%= review.review %>
         <% if review.user != current_user %>
         <% else %>
-          | <%= link_to 'Edit', edit_review_url(review.id) %>
+          | <%= link_to 'Edit', edit_review_url(review.id) %> |
+          <%= link_to 'Remove', review_path(review), method: :delete, data: {confirm: 'Do it. Remove it now!'} %>
         <% end %>
       </div>
     <% end %>

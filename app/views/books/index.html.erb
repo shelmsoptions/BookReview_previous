@@ -8,6 +8,7 @@
       <th class='id_column'>Title</th>
       <th>Author</th>
       <th>Genre</th>
+      <th>Entered By</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= link_to book.title, book_path(book) %></td>
         <td><%= book.author %></td>
         <td><%= book.genre.name %></td>
+        <td><%= book.user.alias %> ( <%= book.user.first_name %> <%= book.user.last_name %> )</td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -27,5 +29,5 @@
 
 <br>
 
-<%= link_to 'New Book', new_book_path %>
+<%= link_to 'New Book', new_book_path, class: 'btn btn-default'  %>
 

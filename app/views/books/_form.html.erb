@@ -23,7 +23,7 @@
 
   <div class='field'>
     <%= form.label :genre_id %>
-    <%= collection_select(:book, :genre_id, Genre.all, :id, :name, {:include_blank => 'Select Genre'})   %>
+    <%= collection_select(:book, :genre_id, Genre.all.order('name ASC'), :id, :name, {include_blank: 'Select Genre'})   %>
   </div>
 
   <%= form.hidden_field :user_id, value: current_user.id %>

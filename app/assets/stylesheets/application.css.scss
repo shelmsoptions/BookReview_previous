@@ -20,3 +20,13 @@
   border-radius: 2px;
   padding: 3px;
 }
+.container {
+  margin-top: 50px;
+}
+.navbar {
+  padding-left: 10px;
+  display: -webkit-flex; /* Safari */
+  -webkit-align-items: center; /* Safari 7.0+ */
+  display: flex;
+  align-items: center;
+}
